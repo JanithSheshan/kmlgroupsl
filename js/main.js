@@ -21,11 +21,14 @@
         if ($(window).width() > 992) {
             if ($(this).scrollTop() > 45) {
                 $('.sticky-top .container').addClass('shadow-sm').css('max-width', '100%');
+                $('.navbar').css('border-radius', '0px'); // Remove border-radius after scroll
             } else {
                 $('.sticky-top .container').removeClass('shadow-sm').css('max-width', $('.topbar .container').width());
+                $('.navbar').css('border-radius', '50px'); // Reset border-radius when scrolled to top
             }
         } else {
             $('.sticky-top .container').addClass('shadow-sm').css('max-width', '100%');
+            $('.navbar').css('border-radius', '0px');
         }
     });
 

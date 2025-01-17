@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,9 +52,9 @@
                 <div class="row gx-0 align-items-center" style="height: 45px;">
                     <div class="col-lg-8 text-center text-lg-start mb-lg-0">
                         <div class="d-flex flex-wrap">
-                            <a href="#" class="text-muted me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
-                            <a href="#" class="text-muted me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
-                            <a href="#" class="text-muted me-0"><i class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
+                        <a href="#" class="text-white me-4"><i class="fas fa-map-marker-alt text-white me-2"></i>Sri Lanka</a>
+                            <a href="#" class="text-white me-4"><i class="fas fa-phone-alt text-white me-2"></i>+94 112123456</a>
+                            <a href="#" class="text-white me-0"><i class="fas fa-envelope text-white me-2"></i>kmlgroup@gmail.com</a>
                         </div>
                     </div>
                     <div class="col-lg-4 text-center text-lg-end">
@@ -74,7 +78,7 @@
             <div class="container px-0">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-white py-3 px-4">
                     <a href="index.html" class="navbar-brand p-0">
-                        <h1 class="m-0" style="color: black;"><img class="img-fulid" style="width: 70px; margin:auto; padding-right: 10px;" src="img/logo.jpg" alt="Logo">Group</h1>
+                        <h1 class="m-0" style="color: black; font-weight: bolder"><img class="img-fulid" style="width: 70px; margin:auto; padding-right: 10px;" src="img/logo.jpg" alt="Logo">Group</h1>
                         <!-- <img src="img/logo.png" alt="Logo"> -->
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -84,8 +88,8 @@
                         <div class="navbar-nav ms-auto py-0">
                             <a href="index.html" class="nav-item nav-link">Home</a>
                             <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="project.html" class="nav-item nav-link">Projects</a>
+                            <a href="sectors.html" class="nav-item nav-link">Sectors</a>
+                            <a href="careers.html" class="nav-item nav-link">Careers</a>
                             <div class="nav-item dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0">
@@ -149,69 +153,44 @@
                     <h1 class="display-4">Latest Articles & News from the Blogs</h1>
                 </div>
                 <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="blog-item bg-light rounded p-4" style="background-image: url(img/bg.png);">
-                            <div class="mb-4">
-                                <h4 class="text-primary mb-2">Investment</h4>
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-0"><span class="text-dark fw-bold">On</span> Mar 14, 2024</p>
-                                    <p class="mb-0"><span class="text-dark fw-bold">By</span> Mark D. Brock</p>
-                                </div>
-                            </div>
-                            <div class="project-img">
-                                <img src="img/blog-1.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                <div class="blog-plus-icon">
-                                    <a href="img/blog-1.jpg" data-lightbox="blog-1" class="btn btn-primary btn-md-square rounded-pill"><i class="fas fa-plus fa-1x"></i></a>
-                                </div>
-                            </div>
-                            <div class="my-4">
-                                <a href="#" class="h4">Revisiting Your Investment & Distribution Goals</a>
-                            </div>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="blog-item bg-light rounded p-4" style="background-image: url(img/bg.png);">
-                            <div class="mb-4">
-                                <h4 class="text-primary mb-2">Business</h4>
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-0"><span class="text-dark fw-bold">On</span> Mar 14, 2024</p>
-                                    <p class="mb-0"><span class="text-dark fw-bold">By</span> Mark D. Brock</p>
-                                </div>
-                            </div>
-                            <div class="project-img">
-                                <img src="img/blog-2.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                <div class="blog-plus-icon">
-                                    <a href="img/blog-2.jpg" data-lightbox="blog-2" class="btn btn-primary btn-md-square rounded-pill"><i class="fas fa-plus fa-1x"></i></a>
-                                </div>
-                            </div>
-                            <div class="my-4">
-                                <a href="#" class="h4">Dimensional Fund Advisors Interview with Director</a>
-                            </div>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Explore More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="blog-item bg-light rounded p-4" style="background-image: url(img/bg.png);">
-                            <div class="mb-4">
-                                <h4 class="text-primary mb-2">Consulting</h4>
-                                <div class="d-flex justify-content-between">
-                                    <p class="mb-0"><span class="text-dark fw-bold">On</span> Mar 14, 2024</p>
-                                    <p class="mb-0"><span class="text-dark fw-bold">By</span> Mark D. Brock</p>
-                                </div>
-                            </div>
-                            <div class="project-img">
-                                <img src="img/blog-3.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                <div class="blog-plus-icon">
-                                    <a href="img/blog-3.jpg" data-lightbox="blog-3" class="btn btn-primary btn-md-square rounded-pill"><i class="fas fa-plus fa-1x"></i></a>
-                                </div>
-                            </div>
-                            <div class="my-4">
-                                <a href="#" class="h4">Interested in Giving Back this year? Here are some tips</a>
-                            </div>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Explore More</a>
-                        </div>
-                    </div>
+                    <?php
+                    // Include database configuration
+                    include 'db_config.php';
+
+                    // Fetch blog data
+                    $sql = "SELECT id, category, date, author, image, title, link FROM blogs";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">';
+                            echo '<div class="blog-item bg-light rounded p-4" style="background-image: url(img/bg.png);">';
+                            echo '<div class="mb-4">';
+                            echo '<h4 class="text-primary mb-2">' . $row["category"] . '</h4>';
+                            echo '<div class="d-flex justify-content-between">';
+                            echo '<p class="mb-0"><span class="text-dark fw-bold">On</span> ' . $row["date"] . '</p>';
+                            echo '<p class="mb-0"><span class="text-dark fw-bold">By</span> ' . $row["author"] . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="project-img">';
+                            echo '<img src="' . $row["image"] . '" class="img-fluid w-100 rounded" alt="Image">';
+                            echo '<div class="blog-plus-icon">';
+                            echo '<a href="' . $row["image"] . '" data-lightbox="blog" class="btn btn-primary btn-md-square rounded-pill"><i class="fas fa-plus fa-1x"></i></a>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="my-4">';
+                            echo '<a href="' . $row["link"] . '" class="h4">' . $row["title"] . '</a>';
+                            echo '</div>';
+                            echo '<a class="btn btn-primary rounded-pill py-2 px-4" href="' . $row["link"] . '">Explore More</a>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "No blogs found.";
+                    }
+
+                    $conn->close();
+                    ?>
                 </div>
             </div>
         </div>
@@ -237,9 +216,9 @@
                         <div class="footer-item d-flex flex-column">
                             <h4 class="text-white mb-4">Explore</h4>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Home</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Services</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Sectors</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Latest Projects</a>
+                            <a href="#"><i class="fas fa-angle-right me-2"></i> Latest Careers</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> testimonial</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Our Team</a>
                             <a href="#"><i class="fas fa-angle-right me-2"></i> Contact Us</a>
