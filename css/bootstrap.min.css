@@ -17,7 +17,7 @@
     --bs-cyan: #A5B9C6;
     --bs-white: #FFFFFF;
     --bs-gray: #91A3B1;
-    --bs-gray-dark: #2E5091;
+    --bs-gray-dark: #151c2b;
     --bs-primary: #2E5091; /* Main primary color */
     --bs-secondary: #A5B9C6;
     --bs-success: #3A9F88;
@@ -25,7 +25,7 @@
     --bs-warning: #91A3B1;
     --bs-danger: #01796F;
     --bs-light: #F7FAFB;
-    --bs-dark: #2E5091;
+    --bs-dark: #020d22;
     --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))
@@ -8377,7 +8377,7 @@ fieldset:disabled .btn {
 }
 
 .bg-dark {
-    background-color: #2e5091 !important
+    background-color: #020d22 !important
 }
 
 .bg-body {
