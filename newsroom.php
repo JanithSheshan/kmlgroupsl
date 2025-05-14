@@ -1,10 +1,14 @@
+<?php
+include 'db.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - KML Group | A Legacy of 60 Years</title>
+  <title>News Room - KML Group | A Legacy of 60 Years</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -15,7 +19,7 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,9 +33,9 @@
 
 </head>
 
-<body class="contact-page">
+<body class="blog-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
+<header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
@@ -46,7 +50,7 @@
           <li><a href="services.html">Services</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="team.html">Team</a></li>
-          <li><a href="newsroom.php">News Room</a></li>
+          <li><a href="newsroom.php" class="active">News Room</a></li>
           <li class="dropdown"><a href="#"><span>Sectors</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="kurunegala-merchants.html">Kurunegala Merchants (Pvt) Ltd</a></li>
@@ -65,7 +69,7 @@
               <li><a href="kanlark-ntertainment.html">Kanlark Entertainment (Pvt) Ltd</a></li>
             </ul>
           </li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -74,101 +78,56 @@
   </header>
 
   <main class="main">
-
-    <!-- Page Title -->
     <div class="page-title dark-background">
       <div class="container position-relative">
-        <h1>Contact</h1>
-        <p>Get in touch with us for business inquiries, partnership opportunities, or any questions you may have about our services.</p>
+        <h1>News Room</h1>
+        <p>Stay updated with our latest news and insights.</p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Contact</li>
+            <li class="current">News Room</li>
+            <li><a href="login.php">Login</a></li>
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div>
     <div class="green-background"></div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
+    <section id="blog-posts" class="blog-posts section">
+      <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-6 ">
-            <div class="row gy-4">
+          <?php
 
-              <div class="col-lg-12">
-                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
-                  <i class="bi bi-geo-alt"></i>
-                  <h3>Address</h3>
-                  <p>118/3 Sumangala Mawatha, Kurunegala, Sri Lanka</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bi bi-telephone"></i>
-                  <h3>Call Us</h3>
-                  <p>+94 37 222 2353</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="col-md-6">
-                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
-                  <i class="bi bi-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p><a href="mailto:kmlkurunegala@gmail.com">kmlkurunegala@gmail.com</a></p>
-                </div>
-              </div><!-- End Info Item -->
-
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="4" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
+          // Fetch blog posts
+          $sql = "SELECT * FROM posts ORDER BY created_at DESC";
+          $result = $conn->query($sql);
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+              echo '<div class="col-lg-4">';
+              echo '  <article>';
+              echo '    <div class="post-img">';
+              echo '      <img src="' . $row['image'] . '" alt="" class="img-fluid">';
+              echo '    </div>';
+              echo '    <p class="post-category">' . $row['category'] . '</p>';
+              echo '    <h2 class="title">';
+              echo '      <a href="newsroom-details.php?post_id=' . htmlspecialchars($row['post_id'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') . '</a>';
+              echo '    </h2>';
+              echo '    <a href="newsroom-details.php?post_id=' . htmlspecialchars($row['post_id'], ENT_QUOTES, 'UTF-8') . '" class="readmore">';
+              echo '    <div class="d-flex align-items-center">';
+              echo '      <img src="' . $row['author_image'] . '" alt="" class="img-fluid post-author-img flex-shrink-0">';
+              echo '      <div class="post-meta">';
+              echo '        <p class="post-author">' . $row['author'] . '</p>';
+              echo '        <p class="post-date"><time datetime="' . $row['created_at'] . '">' . date("M d, Y", strtotime($row['created_at'])) . '</time></p>';
+              echo '      </div>';
+              echo '    </div>';
+              echo '    </a>';
+              echo '  </article>';
+              echo '</div>';
+          }
+          $conn = null;
+          ?>
         </div>
-
       </div>
-
-      <div class="mt-5" data-aos="fade-up" data-aos-delay="200">
-        <iframe style="border:0; width: 100%; height: 370px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7963.366317768222!2d80.356559!3d7.481786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae32454321d5611%3A0x5d8f1df2b63b1c4c!2s118%2F3%20Sumangala%20Mawatha%2C%20Kurunegala%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1684304013675!5m2!1sen!2slk" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div><!-- End Google Maps -->
-
-    </section><!-- /Contact Section -->
-
-
+    </section>
   </main>
 
   <footer id="footer" class="footer dark-background">

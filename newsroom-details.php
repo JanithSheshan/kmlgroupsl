@@ -1,5 +1,32 @@
 <?php
 include 'db.php';
+
+// Get the post_id from the URL
+if (isset($_GET['post_id'])) {
+    $post_id = $_GET['post_id'];
+
+    // Query to fetch post details
+    $stmt = $conn->prepare("SELECT * FROM posts WHERE post_id = :post_id");
+    $stmt->execute(['post_id' => $post_id]);
+
+    $post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($post) {
+        // Post data found, display the post details
+        $title = $post['title'];
+        $description = $post['description'];
+        $author = $post['author'];
+        $created_at = $post['created_at'];
+        $image = $post['image'];
+        $category = $post['category']; // Ensure 'category' exists in your database table
+    } else {
+        echo "Post not found!";
+        exit;
+    }
+} else {
+    echo "No post specified!";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +35,7 @@ include 'db.php';
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Blog - KML Group | A Reliable Distribution Network</title>
+  <title>News Room Details - KML Group | A Legacy of 60 Years</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -33,14 +60,13 @@ include 'db.php';
 
 </head>
 
-<body class="blog-page">
+<body class="blog-details-page">
 
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="assets/img/logo.png" alt="KML Group Logo">
         <h1 class="sitename">KML GROUP</h1>
       </a>
 
@@ -51,10 +77,10 @@ include 'db.php';
           <li><a href="services.html">Services</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="team.html">Team</a></li>
-          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="newsroom.php" class="active">News Room</a></li>
           <li class="dropdown"><a href="#"><span>Sectors</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="service-details1.html">Kurunegala Merchants (Pvt) Ltd</a></li>
+              <li><a href="kurunegala-merchants.html">Kurunegala Merchants (Pvt) Ltd</a></li>
               <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="#">Deep Dropdown 1</a></li>
@@ -64,10 +90,10 @@ include 'db.php';
                   <li><a href="#">Deep Dropdown 5</a></li>
                 </ul>
               </li> -->
-              <li><a href="service-details2.html">KML Holdings (Pvt) Ltd</a></li>
-              <li><a href="service-details3.html">KML Logistics (Pvt) Ltd</a></li>
-              <li><a href="service-details4.html">KML Distributors (Pvt) Ltd</a></li>
-              <li><a href="service-details5.html">Kanlark Entertainment (Pvt) Ltd</a></li>
+              <li><a href="kml-holdings.html">KML Holdings (Pvt) Ltd</a></li>
+              <li><a href="kml-logistics.html">KML Logistics (Pvt) Ltd</a></li>
+              <li><a href="kml-distributors.html">KML Distributors (Pvt) Ltd</a></li>
+              <li><a href="kanlark-ntertainment.html">Kanlark Entertainment (Pvt) Ltd</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
@@ -78,59 +104,71 @@ include 'db.php';
     </div>
   </header>
 
-  <main class="main">
+    <main class="main">
     <div class="page-title dark-background">
       <div class="container position-relative">
-        <h1>Blog</h1>
+        <h1>News Room - Details</h1>
         <p>Stay updated with our latest news and insights.</p>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Blog</li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="newsroom.php">News Room</a></li>
+            <li class="current">News Room-Details</li>
           </ol>
         </nav>
       </div>
     </div>
+    <div class="green-background"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg m-auto">
 
-    <section id="blog-posts" class="blog-posts section">
-      <div class="container">
-        <div class="row gy-4">
-          <?php
+                    <!-- Blog Details Section -->
+                    <section id="blog-details" class="blog-details section">
+                        <div class="container">
+                            <article class="article">
 
-          // Fetch blog posts
-          $sql = "SELECT * FROM posts ORDER BY created_at DESC";
-          $result = $conn->query($sql);
-          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-              echo '<div class="col-lg-4">';
-              echo '  <article>';
-              echo '    <div class="post-img">';
-              echo '      <img src="' . $row['image'] . '" alt="" class="img-fluid">';
-              echo '    </div>';
-              echo '    <p class="post-category">' . $row['category'] . '</p>';
-              echo '    <h2 class="title">';
-              echo '      <a href="blog-details.php?post_id=' . htmlspecialchars($row['post_id'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8') . '</a>';
-              echo '    </h2>';
-              echo '    <a href="blog-details.php?post_id=' . htmlspecialchars($row['post_id'], ENT_QUOTES, 'UTF-8') . '" class="readmore">';
-              echo '    <div class="d-flex align-items-center">';
-              echo '      <img src="' . $row['author_image'] . '" alt="" class="img-fluid post-author-img flex-shrink-0">';
-              echo '      <div class="post-meta">';
-              echo '        <p class="post-author">' . $row['author'] . '</p>';
-              echo '        <p class="post-date"><time datetime="' . $row['created_at'] . '">' . date("M d, Y", strtotime($row['created_at'])) . '</time></p>';
-              echo '      </div>';
-              echo '    </div>';
-              echo '    </a>';
-              echo '  </article>';
-              echo '</div>';
-          }
-          $conn = null;
-          ?>
+                                <div class="post-img text-center">
+                                    <img src="<?php echo htmlspecialchars($image); ?>" alt="" class="img-fluid">
+                                </div>
+
+                                <h2 class="title"><?php echo htmlspecialchars($title); ?></h2>
+
+                                <div class="meta-top">
+                                    <ul>
+                                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="newsroom-details.php"><?php echo htmlspecialchars($author); ?></a></li>
+                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="newsroom-details.php"><time datetime="<?php echo htmlspecialchars($created_at); ?>"><?php echo htmlspecialchars($created_at); ?></time></a></li>
+                                        <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="newsroom-details.php"></a></li>
+                                    </ul>
+                                </div><br><!-- End meta top -->
+
+                                <div class="description">
+                                    <p><?php echo nl2br(htmlspecialchars($description)); ?></p>
+                                </div><!-- End post description -->
+
+                                <div class="meta-bottom">
+                                    <i class="bi bi-folder"></i>
+                                        <li><a href="#"><?php echo isset($category) ? htmlspecialchars($category) : 'Uncategorized'; ?></a></li>
+                                    </ul>
+
+                                    <i class="bi bi-tags"></i>
+                                    <ul class="tags">
+                                        <li><a href="#">Creative</a></li>
+                                        <li><a href="#">Tips</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                    </ul>
+                                </div><!-- End meta bottom -->
+
+                            </article>
+
+                        </div>
+                    </section><!-- /Blog Details Section -->
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
+    </main>
 
-  <footer id="footer" class="footer dark-background">
+    <footer id="footer" class="footer dark-background">
 
 <div class="footer-newsletter">
   <div class="container">
@@ -227,5 +265,4 @@ include 'db.php';
   <script src="assets/js/main.js"></script>
 
 </body>
-
 </html>
