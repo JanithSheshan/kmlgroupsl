@@ -45,7 +45,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files (CDN) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -100,7 +102,8 @@
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="team.html">Team</a></li>
           <li><a href="newsroom.php">News Room</a></li>
-          <li class="dropdown"><a href="kurunegala-merchants.html"><span>Sectors</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="kurunegala-merchants.html"><span>Sectors</span> <i
+                class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="kurunegala-merchants.html">Kurunegala Merchants (Pvt) Ltd</a></li>
               <!-- <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -115,7 +118,7 @@
               <li><a href="kml-holdings.html">KML Holdings (Pvt) Ltd</a></li>
               <li><a href="kml-logistics.html">KML Logistics (Pvt) Ltd</a></li>
               <li><a href="kml-distributors.html">KML Distributors (Pvt) Ltd</a></li>
-              <li><a href="kanlark-ntertainment.html">Kanlark Entertainment (Pvt) Ltd</a></li>
+              <li><a href="kanlark-entertainment.html">Kanlark Entertainment (Pvt) Ltd</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
@@ -131,196 +134,249 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <div id="hero-carousel" class="carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000" data-bs-wrap="true">
+      <div id="hero-carousel" class="carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000"
+        data-bs-wrap="true">
 
-      <div class="container position-relative">
+        <div class="container position-relative">
 
-        <div class="carousel-item active">
-        <div class="carousel-container">
-          <h1 class="display-4 fw-bold mb-3">Welcome to <span style="color: #ffc107; font-weight: bolder; text-shadow: beige;"> KML GROUP</span></h1>
-          <p>For over 60 years, KML Group has been a trusted leader in logistics, distribution, and corporate
-          investments across Sri Lanka, driving growth and innovation.</p>
-          <a href="#about" class="btn-get-started">Read More</a>
+          <div class="carousel-item active">
+            <div class="carousel-container">
+              <h1 class="display-4 fw-bold mb-3">Welcome to <span
+                  style="color: #ffc107; font-weight: bolder; text-shadow: beige;"> KML GROUP</span></h1>
+              <p>For over 60 years, KML Group has been a trusted leader in logistics, distribution, and corporate
+                investments across Sri Lanka, driving growth and innovation.</p>
+              <a href="#about" class="btn-get-started">Read More</a>
+            </div>
+          </div><!-- End Carousel Item -->
+
+          <div class="carousel-item">
+            <div class="carousel-container">
+              <h1 class="display-4 fw-bold mb-3">Building a Legacy of Excellence</h1>
+              <p>Founded in 1966, KML Group has grown into a multi-sector powerhouse, providing reliable solutions for
+                businesses and communities across the island.</p>
+              <a href="#about" class="btn-get-started">Read More</a>
+            </div>
+          </div><!-- End Carousel Item -->
+
+          <div class="carousel-item">
+            <div class="carousel-container">
+              <h1 class="display-4 fw-bold mb-3">Diverse Business Portfolio</h1>
+              <p>From logistics and distribution to water production and entertainment, we offer a comprehensive range
+                of services to meet the evolving needs of our clients.</p>
+              <a href="#about" class="btn-get-started">Read More</a>
+            </div>
+          </div><!-- End Carousel Item -->
+
+          <ol class="carousel-indicators"></ol>
+
         </div>
-        </div><!-- End Carousel Item -->
-
-        <div class="carousel-item">
-        <div class="carousel-container">
-          <h1 class="display-4 fw-bold mb-3">Building a Legacy of Excellence</h1>
-          <p>Founded in 1966, KML Group has grown into a multi-sector powerhouse, providing reliable solutions for
-          businesses and communities across the island.</p>
-          <a href="#about" class="btn-get-started">Read More</a>
-        </div>
-        </div><!-- End Carousel Item -->
-
-        <div class="carousel-item">
-        <div class="carousel-container">
-          <h1 class="display-4 fw-bold mb-3">Diverse Business Portfolio</h1>
-          <p>From logistics and distribution to water production and entertainment, we offer a comprehensive range
-          of services to meet the evolving needs of our clients.</p>
-          <a href="#about" class="btn-get-started">Read More</a>
-        </div>
-        </div><!-- End Carousel Item -->
-
-        <ol class="carousel-indicators"></ol>
-
-      </div>
 
       </div>
 
       <script>
-      // Enable looping for Bootstrap carousel
-      var heroCarousel = document.getElementById('hero-carousel');
-      if (heroCarousel) {
-        var carousel = new bootstrap.Carousel(heroCarousel, {
-        interval: 3000,
-        ride: 'carousel',
-        wrap: true // enables looping
-        });
-      }
+        // Enable looping for Bootstrap carousel
+        var heroCarousel = document.getElementById('hero-carousel');
+        if (heroCarousel) {
+          var carousel = new bootstrap.Carousel(heroCarousel, {
+            interval: 3000,
+            ride: 'carousel',
+            wrap: true // enables looping
+          });
+        }
       </script>
 
     </section><!-- /Hero Section -->
 
     <!-- Featured Services Section -->
-<section id="featured-services" class="featured-services section py-5 dark-background">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">Our Core Sectors</h2>
-      <p class="text-muted">Explore the key industries that drive KML Group forward.</p>
-    </div>
-    <div class="row gy-4">
+    <section id="featured-services" class="featured-services section py-5 dark-background">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Our Core Sectors</h2>
+          <p class="text-muted">Explore the key industries that drive KML Group forward.</p>
+        </div>
+        <div class="row gy-4">
 
-      <!-- Distribution -->
-      <div class="col-lg-4 col-md-6 p-0" data-aos="fade-up" data-aos-delay="100">
-        <div class="card border-0 h-100 shadow-lg service-card" style="background-color: #243447; color: #ffffff;">
-          <div class="card-body text-center">
-            <div
-              class="icon-box bg-primary text-white rounded-circle mb-3 d-inline-flex align-items-center justify-content-center"
-              style="width:60px; height:60px;">
-              <i class="bi bi-truck fs-4"></i>
+          <!-- Distribution -->
+          <div class="col-lg-4 col-md-6 p-0" data-aos="fade-up" data-aos-delay="100">
+            <div class="card border-0 h-100 shadow-lg service-card" style="background-color: #243447; color: #ffffff;">
+              <div class="card-body text-center">
+                <div
+                  class="icon-box bg-primary text-white rounded-circle mb-3 d-inline-flex align-items-center justify-content-center"
+                  style="width:60px; height:60px;">
+                  <i class="bi bi-truck fs-4"></i>
+                </div>
+                <h5 class="card-title">Distribution</h5>
+                <p class="card-text small">Decades of trusted distribution in FMCG, tobacco, and automotive lubricants
+                  across Sri Lanka.</p>
+                <a href="services.html" class="stretched-link text-decoration-none">Read More</a>
+              </div>
             </div>
-            <h5 class="card-title">Distribution</h5>
-            <p class="card-text small">Decades of trusted distribution in FMCG, tobacco, and automotive lubricants across Sri Lanka.</p>
-            <a href="services.html" class="stretched-link text-decoration-none">Read More</a>
           </div>
+
+          <!-- Manufacturing -->
+          <div class="col-lg-4 col-md-6 p-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="card border-0 h-100 shadow-lg service-card" style="background-color: #243447; color: #ffffff;">
+              <div class="card-body text-center">
+                <div
+                  class="icon-box bg-success text-white rounded-circle mb-3 d-inline-flex align-items-center justify-content-center"
+                  style="width:60px; height:60px;">
+                  <i class="bi bi-droplet-half fs-4"></i>
+                </div>
+                <h5 class="card-title">Manufacturing</h5>
+                <p class="card-text small">Home to Blue Fill bottled water, certified production processes, and scalable
+                  distribution logistics.</p>
+                <a href="services.html" class="stretched-link text-decoration-none">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leisure -->
+          <div class="col-lg-4 col-md-12 p-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="card border-0 h-100 shadow-lg service-card" style="background-color: #243447; color: #ffffff;">
+              <div class="card-body text-center">
+                <div
+                  class="icon-box bg-danger text-white rounded-circle mb-3 d-inline-flex align-items-center justify-content-center"
+                  style="width:60px; height:60px;">
+                  <i class="bi bi-camera-reels fs-4"></i>
+                </div>
+                <h5 class="card-title">Leisure & Entertainment</h5>
+                <p class="card-text small">Expanding into tourism and cultural events through Kanlark Entertainment and
+                  Kalpitiya resorts.</p>
+                <a href="services.html" class="stretched-link text-decoration-none">Read More</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <!-- Manufacturing -->
-      <div class="col-lg-4 col-md-6 p-0" data-aos="fade-up" data-aos-delay="200">
-        <div class="card border-0 h-100 shadow-lg service-card" style="background-color: #243447; color: #ffffff;">
-          <div class="card-body text-center">
-            <div
-              class="icon-box bg-success text-white rounded-circle mb-3 d-inline-flex align-items-center justify-content-center"
-              style="width:60px; height:60px;">
-              <i class="bi bi-droplet-half fs-4"></i>
-            </div>
-            <h5 class="card-title">Manufacturing</h5>
-            <p class="card-text small">Home to Blue Fill bottled water, certified production processes, and scalable distribution logistics.</p>
-            <a href="services.html" class="stretched-link text-decoration-none">Read More</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Leisure -->
-      <div class="col-lg-4 col-md-12 p-0" data-aos="fade-up" data-aos-delay="300">
-        <div class="card border-0 h-100 shadow-lg service-card" style="background-color: #243447; color: #ffffff;">
-          <div class="card-body text-center">
-            <div
-              class="icon-box bg-danger text-white rounded-circle mb-3 d-inline-flex align-items-center justify-content-center"
-              style="width:60px; height:60px;">
-              <i class="bi bi-camera-reels fs-4"></i>
-            </div>
-            <h5 class="card-title">Leisure & Entertainment</h5>
-            <p class="card-text small">Expanding into tourism and cultural events through Kanlark Entertainment and Kalpitiya resorts.</p>
-            <a href="services.html" class="stretched-link text-decoration-none">Read More</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- About Section -->
-<section id="about" class="about section light-background py-5">
-  <div class="container">
-    <div class="row gy-5 align-items-center">
-      <!-- Vision / Founder Info -->
-    <div class="row mt-5" data-aos="fade-up" data-aos-delay="300">
-      <div class="col-lg-12 text-center">
-        <h4 class="fw-bold text-secondary mb-3">Empowering Progress Through Integrity</h4>
-        <p class="text-muted mb-4">
-          Rooted in honesty, fairness, and responsibility, we uplift communities and empower industries with innovative and sustainable solutions.
-        </p>
-      </div>
-      <div class="col-lg-12 d-flex flex-column align-items-center text-center">
-        <div class="d-flex justify-content-center align-items-center mb-3 gap-4">
-          <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/founder.jpg" alt="Mr. Punyadasa Perera - Founder" class="rounded-circle shadow-sm mb-2" style="width: 90px; height: 90px; object-fit: cover;">
-        <strong>Mr. Punyadasa Perera</strong>
-        <small class="text-muted">Founder</small>
+    <section id="about" class="about section light-background py-5">
+      <div class="container">
+        <div class="row gy-5 align-items-center">
+          <!-- Vision / Founder Info -->
+          <div class="row mt-5" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-lg-12 text-center">
+              <h4 class="fw-bold text-secondary mb-3">Empowering Progress Through Integrity</h4>
+              <p class="text-muted mb-4">
+                Rooted in honesty, fairness, and responsibility, we uplift communities and empower industries with
+                innovative and sustainable solutions.
+              </p>
+            </div>
+            <div class="col-lg-12 d-flex flex-column align-items-center text-center">
+              <div class="d-flex justify-content-center align-items-center mb-3 gap-4">
+                <div class="d-flex flex-column align-items-center">
+                  <img src="assets/img/founder.jpg" alt="Mr. Punyadasa Perera - Founder"
+                    class="rounded-circle shadow-sm mb-2" style="width: 90px; height: 90px; object-fit: cover;">
+                  <strong>Mr. Punyadasa Perera</strong>
+                  <small class="text-muted">Founder</small>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                  <img src="assets/img/founder-wife.jpg" alt="Mrs. Chandra Perera - Co-Founder"
+                    class="rounded-circle shadow-sm mb-2" style="width: 90px; height: 90px; object-fit: cover;">
+                  <strong>Mrs. Chandra Perera</strong>
+                  <small class="text-muted">Co-Founder</small>
+                </div>
+              </div>
+              <small class="text-muted mb-3">Founders, KML Group</small>
+            </div>
           </div>
-          <div class="d-flex flex-column align-items-center">
-        <img src="assets/img/founder-wife.jpg" alt="Mrs. Chandra Perera - Co-Founder" class="rounded-circle shadow-sm mb-2" style="width: 90px; height: 90px; object-fit: cover;">
-        <strong>Mrs. Chandra Perera</strong>
-        <small class="text-muted">Co-Founder</small>
-          </div>
+
         </div>
-        <small class="text-muted mb-3">Founders, KML Group</small>
       </div>
-    </div>
-    
-      <!-- Image & Video -->
-      <!-- <div class="col-lg-6 position-relative video" data-aos="fade-up" data-aos-delay="100">
-        <img src="assets/img/about.jpg" class="img-fluid rounded shadow-sm" alt="KML Group Legacy">
-        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
-      </div> -->
+    </section>
 
-      <!-- Main Content -->
-      <!-- <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="mb-3 fw-bold text-primary">Legacy of 60 Years in Business Excellence</h3>
-        <p class="fst-italic text-muted">
-          Founded in 1966, KML Group began as a regional distributor—Kurunegala Merchants (Pvt) Ltd—under the visionary leadership of the late Mr. Punyadasa Perera and Mrs. Chandra Perera.
-        </p>
-        <p>
-          From humble beginnings in Kurunegala, KML expanded across the North Western Province by 2012. Today, the next generation continues this journey, driven by resilience and innovation.
-        </p>
-        <ul class="list-unstyled ps-3">
-          <li class="mb-2"><i class="bi bi-check2-all text-success me-2"></i>Established in 1966 with deep family values and community roots.</li>
-          <li class="mb-2"><i class="bi bi-check2-all text-success me-2"></i>Expanded from Kurunegala to Anuradhapura, Kandy, and Colombo.</li>
-          <li class="mb-2"><i class="bi bi-check2-all text-success me-2"></i>Formed strategic alliances with Chevron, Phoenix, and CTC.</li>
-        </ul>
-      </div> -->
-    </div>
-  </div>
-</section>
-
-<!-- Clients Section -->
-  <section id="clients" class="clients section py-5 bg-light">
-    <div class="container" data-aos="fade-up">
+    <!-- Clients Section -->
+    <!-- Clients Section -->
+    <section id="clients" class="clients section py-5 bg-light">
+      <div class="container" data-aos="fade-up">
       <div class="text-center mb-4">
         <h2>Our Partners</h2>
         <p class="text-muted">Proud collaborations with leading brands and companies across Sri Lanka.</p>
       </div>
+
       <div class="swiper clients-slider">
         <div class="swiper-wrapper align-items-center">
-          <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt="Client 1"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt="Client 2"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt="Client 3"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt="Client 4"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt="Client 5"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt="Client 6"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt="Client 7"></div>
-          <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt="Client 8"></div>
+        <!-- Slides (original 3) -->
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-1.png" class="img-fluid" alt="Client 1"
+          style="max-width:150px;max-height:75px;">
         </div>
-        <br><br>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-2.png" class="img-fluid" alt="Client 2"
+          style="max-width:150px;max-height:75px;">
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-3.png" class="img-fluid" alt="Client 3"
+          style="max-width:150px;max-height:75px;">
+        </div>
+
+        <!-- Duplicates (help Swiper loop cleanly) -->
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-1.png" class="img-fluid" alt="Client 1"
+          style="max-width:150px;max-height:75px;">
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-2.png" class="img-fluid" alt="Client 2"
+          style="max-width:150px;max-height:75px;">
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-3.png" class="img-fluid" alt="Client 3"
+          style="max-width:150px;max-height:75px;">
+        </div>
+
+        <!-- Duplicates (help Swiper loop cleanly) -->
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-1.png" class="img-fluid" alt="Client 1"
+          style="max-width:150px;max-height:75px;">
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-2.png" class="img-fluid" alt="Client 2"
+          style="max-width:150px;max-height:75px;">
+        </div>
+        <div class="swiper-slide">
+          <img src="assets/img/partners/partners-3.png" class="img-fluid" alt="Client 3"
+          style="max-width:150px;max-height:75px;">
+        </div>
+        </div>
       </div>
-    </div>
-  </section>
+      </div>
+    </section>
+
+    <!-- Swiper CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <style>
+      /* optional: ensure the slider doesn't collapse */
+      .clients-slider {
+      width: 100%;
+      overflow: hidden;
+      }
+
+      .clients-slider .swiper-wrapper {
+      align-items: center;
+      }
+    </style>
+
+    <script>
+      const swiper = new Swiper(".clients-slider", {
+      loop: true,
+      slidesPerView: 3,
+      spaceBetween: 20,
+      allowTouchMove: false,                  // pure auto-scroll
+      speed: 6000,                            // higher = slower linear scroll
+      autoplay: { delay: 0, disableOnInteraction: false },
+      freeMode: { enabled: true, momentum: false }, // linear, continuous feel
+      breakpoints: {
+        0: { slidesPerView: 2, spaceBetween: 16 },
+        768: { slidesPerView: 3, spaceBetween: 30 }
+      }
+      });
+    </script>
+
 
   </main>
 
@@ -353,7 +409,7 @@
             <span class="sitename">KML Group</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>118/3 Sumangala Mawatha, Kurunegala, Sri Lanka</p>
+            <p>118/3, Second Lane, Sumangala Mawatha, Kurunegala, Sri Lanka</p>
             <p><strong>Phone:</strong> <span>+94 37 222 2353</span></p>
             <p><strong>Email:</strong> <span>kmlgroup.co@gmail.com</span></p>
           </div>
@@ -423,42 +479,6 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script>
-  var swiper = new Swiper(".clients-slider", {
-    loop: true,
-    autoplay: {
-      delay: 0,
-      disableOnInteraction: false,
-    },
-    speed: 3000, // Smooth continuous speed
-    slidesPerView: "auto",
-    spaceBetween: 30,
-    grabCursor: true,
-    centeredSlides: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    breakpoints: {
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        480: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        640: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
-        992: {
-          slidesPerView: 6,
-          spaceBetween: 50,
-        }
-      },
-  });
-</script>
 
 </body>
 

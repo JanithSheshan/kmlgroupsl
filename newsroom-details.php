@@ -93,7 +93,7 @@ if (isset($_GET['post_id'])) {
               <li><a href="kml-holdings.html">KML Holdings (Pvt) Ltd</a></li>
               <li><a href="kml-logistics.html">KML Logistics (Pvt) Ltd</a></li>
               <li><a href="kml-distributors.html">KML Distributors (Pvt) Ltd</a></li>
-              <li><a href="kanlark-ntertainment.html">Kanlark Entertainment (Pvt) Ltd</a></li>
+              <li><a href="kanlark-entertainment.html">Kanlark Entertainment (Pvt) Ltd</a></li>
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
