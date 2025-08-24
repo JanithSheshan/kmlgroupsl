@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>KML Group | Website Launch</title>
+  <meta name="description" content="KML Group official website launch. Celebrating 60 years of business excellence in Sri Lanka.">
+  <meta name="author" content="KML Group">
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --overlay: rgba(0,0,0,0.55);
+      --primary: #fff;
+      --accent: #f8c22e;
+      --font: 'Source Sans Pro', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(var(--overlay), var(--overlay)),
+        url('assets/img/hero-bg.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font);
+      color: var(--primary);
+      text-align: center;
+    }
+    .container {
+      background: rgba(0,0,0,0.4);
+      padding: 2.5rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      max-width: 450px;
+      width: 100%;
+    }
+    .logo {
+      width: 90px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #e0e0e0;
+    }
+    .launch-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 15px 40px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .launch-btn:hover {
+      background: #ffd84d;
+      transform: scale(1.05);
+    }
+    .countdown-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      font-weight: bold;
+      display: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/img/logo.png" alt="KML Group Logo" class="logo">
+    <h1>Welcome to KML Group</h1>
+    <p>Celebrating 60 Years of Excellence – Our Official Website is Now Live</p>
+    <button class="launch-btn" onclick="startLaunch()">Launch Website <i class="bi bi-arrow-right ms-2"></i></button>
+  </div>
+
+  <!-- Countdown Overlay -->
+  <div id="countdownOverlay" class="countdown-overlay">
+    <span id="countdownNumber">3</span>
+  </div>
+
+  <script>
+    function startLaunch() {
+      const overlay = document.getElementById("countdownOverlay");
+      const number = document.getElementById("countdownNumber");
+      let count = 3;
+
+      overlay.style.display = "flex";
+      number.textContent = count;
+
+      const timer = setInterval(() => {
+        count--;
+        if (count > 0) {
+          number.textContent = count;
+        } else {
+          clearInterval(timer);
+          window.location.href = "https://kmlgroupsl.com";
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
