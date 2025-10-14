@@ -31,6 +31,27 @@ include 'db.php';
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kmlgroupsl.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "KML - News Room",
+          "item": "https://kmlgroupsl.com/newsroom.php"
+        }
+      ]
+    }
+    </script>
+
 </head>
 
 <body class="blog-page">
