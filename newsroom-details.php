@@ -153,9 +153,9 @@ if (isset($_GET['post_id'])) {
 
                                     <i class="bi bi-tags"></i>
                                     <ul class="tags">
-                                        <li><a href="#">Creative</a></li>
-                                        <li><a href="#">Tips</a></li>
-                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#">KML Group</a></li>
+                                        <li><a href="#">Sri Lanka</a></li>
+                                        <li><a href="#">KML60Years</a></li>
                                     </ul>
                                 </div><!-- End meta bottom -->
 
