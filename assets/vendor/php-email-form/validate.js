@@ -1,96 +1,202 @@
 /**
- * KML Group - Form Validation & Submission v1.0
- * Author: Janith Aththanayaka
- * URL: https://kmlgroup.lk
- * Description: Handles AJAX form validation and submission with custom alerts
+ * PHP Email Form Validation - v3.6
+ * URL: https://bootstrapmade.com/php-email-form/
+ * Author: BootstrapMade.com
+ * Adapted for KML Group - Handles both contact and newsletter forms
  */
-
 (function () {
   "use strict";
 
-  // Select all forms with the class .kml-form
-  let forms = document.querySelectorAll('.kml-form');
+  let forms = document.querySelectorAll('.php-email-form');
 
-  forms.forEach(function (form) {
-    form.addEventListener('submit', function (event) {
+  forms.forEach( function(form) {
+    form.addEventListener('submit', function(event) {
       event.preventDefault();
-      const thisForm = this;
 
-      const action = thisForm.getAttribute('action');
-      const recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
+      let thisForm = this;
 
-      if (!action) {
-        showError(thisForm, 'Form action is not defined. Please contact support.');
+      let action = thisForm.getAttribute('action');
+      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
+      
+      if( ! action ) {
+        displayError(thisForm, 'The form action property is not set!');
         return;
       }
+      
+      // Show loading state
+      let loadingElement = thisForm.querySelector('.loading');
+      let errorElement = thisForm.querySelector('.error-message');
+      let sentElement = thisForm.querySelector('.sent-message');
+      
+      if (loadingElement) loadingElement.classList.add('d-block');
+      if (errorElement) errorElement.classList.remove('d-block');
+      if (sentElement) sentElement.classList.remove('d-block');
 
-      const loading = thisForm.querySelector('.loading');
-      const errorMsg = thisForm.querySelector('.error-message');
-      const successMsg = thisForm.querySelector('.sent-message');
+      let formData = new FormData( thisForm );
 
-      loading.classList.add('d-block');
-      errorMsg.classList.remove('d-block');
-      successMsg.classList.remove('d-block');
-
-      const formData = new FormData(thisForm);
-
-      // Handle reCaptcha if available
-      if (recaptcha) {
-        if (typeof grecaptcha !== "undefined") {
-          grecaptcha.ready(function () {
-            grecaptcha.execute(recaptcha, { action: 'form_submit' })
+      if ( recaptcha ) {
+        if(typeof grecaptcha !== "undefined" ) {
+          grecaptcha.ready(function() {
+            try {
+              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
               .then(token => {
                 formData.set('recaptcha-response', token);
-                sendForm(thisForm, action, formData);
+                php_email_form_submit(thisForm, action, formData);
               })
-              .catch(() => {
-                showError(thisForm, 'reCAPTCHA validation failed.');
-              });
+            } catch(error) {
+              displayError(thisForm, error);
+            }
           });
         } else {
-          showError(thisForm, 'reCAPTCHA API not loaded.');
+          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
       } else {
-        sendForm(thisForm, action, formData);
+        php_email_form_submit(thisForm, action, formData);
       }
     });
   });
 
-  // Send form via AJAX
-  function sendForm(thisForm, action, formData) {
+  function php_email_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
       body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
-      .then(response => {
-        if (response.ok) return response.json();
-        throw new Error(`Network error: ${response.statusText}`);
-      })
-      .then(data => {
-        thisForm.querySelector('.loading').classList.remove('d-block');
-        if (data.status === 'success') {
-          const successMsg = thisForm.querySelector('.sent-message');
-          successMsg.innerHTML = data.message || 'Thank you! Your message has been sent successfully.';
-          successMsg.classList.add('d-block');
-          thisForm.reset();
-        } else {
-          throw new Error(data.message || 'Submission failed. Please try again later.');
+    .then(response => {
+      if( response.ok ) {
+        return response.json();
+      } else {
+        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+      }
+    })
+    .then(data => {
+      let loadingElement = thisForm.querySelector('.loading');
+      let sentElement = thisForm.querySelector('.sent-message');
+      let errorElement = thisForm.querySelector('.error-message');
+      
+      if (loadingElement) loadingElement.classList.remove('d-block');
+      
+      if (data.status === 'success') {
+        // Show success message in the form if element exists
+        if (sentElement) {
+          sentElement.innerHTML = data.message;
+          sentElement.classList.add('d-block');
         }
-      })
-      .catch(error => {
-        showError(thisForm, error);
-      });
+        
+        // Reset form on success
+        thisForm.reset(); 
+        
+        // Show notification
+        showNotification(data.message, 'success');
+      } else {
+        throw new Error(data.message ? data.message : 'Form submission failed and no error message returned from: ' + action); 
+      }
+    })
+    .catch((error) => {
+      displayError(thisForm, error);
+      // Also show notification for errors
+      showNotification(error.message, 'error');
+    });
   }
 
-  // Display error message
-  function showError(thisForm, error) {
-    const loading = thisForm.querySelector('.loading');
-    const errorMsg = thisForm.querySelector('.error-message');
+  function displayError(thisForm, error) {
+    let loadingElement = thisForm.querySelector('.loading');
+    let errorElement = thisForm.querySelector('.error-message');
+    
+    if (loadingElement) loadingElement.classList.remove('d-block');
+    if (errorElement) {
+      errorElement.innerHTML = error;
+      errorElement.classList.add('d-block');
+    }
+  }
 
-    loading.classList.remove('d-block');
-    errorMsg.innerHTML = `<i class="bi bi-exclamation-circle"></i> ${error}`;
-    errorMsg.classList.add('d-block');
+  // Notification function for showing messages
+  function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span class="notification-message">${message}</span>
+            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">&times;</button>
+        </div>
+    `;
+    
+    // Add styles if not already added
+    if (!document.querySelector('#notification-styles')) {
+        const styles = document.createElement('style');
+        styles.id = 'notification-styles';
+        styles.innerHTML = `
+            .notification {
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                z-index: 10000;
+                min-width: 300px;
+                max-width: 500px;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                border-left: 4px solid #2e8b57;
+                animation: slideIn 0.3s ease-out;
+            }
+            .notification.error {
+                border-left-color: #dc3545;
+            }
+            .notification.success {
+                border-left-color: #28a745;
+            }
+            .notification-content {
+                padding: 15px 20px;
+                display: flex;
+                justify-content: between;
+                align-items: center;
+            }
+            .notification-message {
+                flex: 1;
+                margin-right: 10px;
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            .notification-close {
+                background: none;
+                border: none;
+                font-size: 18px;
+                cursor: pointer;
+                color: #666;
+                padding: 0;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .notification-close:hover {
+                color: #333;
+            }
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(styles);
+    }
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
   }
 
 })();

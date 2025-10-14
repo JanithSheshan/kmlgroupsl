@@ -7,167 +7,173 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Set content type to JSON
-header('Content-Type: application/json');
-
+// Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Sanitize and validate email
+    
+    // Get and validate email
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-
+    
     if (empty($email)) {
-        echo json_encode([
-            'status' => 'error',
-            'message' => '❌ Please enter your email address.'
-        ]);
+        // Redirect back with error message
+        header("Location: ../contact.html?newsletter_status=error&newsletter_message=" . urlencode("Email address is required."));
         exit;
     }
-
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode([
-            'status' => 'error',
-            'message' => '❌ Invalid email format. Please use a valid email address.'
-        ]);
+        // Redirect back with error message
+        header("Location: ../contact.html?newsletter_status=error&newsletter_message=" . urlencode("Please enter a valid email address."));
         exit;
     }
-
+    
     // Admin email
-    $admin_email = "info@kmlgroup.lk";
+    $admin_email = "kmlgroup.co@gmail.com";
     $website_name = "KML Group";
-
-    // --------------------------
-    // Admin Notification Email
-    // --------------------------
+    
+    // Email content for admin notification
     $admin_subject = "New Newsletter Subscription - KML Group";
     $admin_message = "
     <!DOCTYPE html>
     <html>
     <head>
         <style>
-            body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
-            .container { max-width: 600px; margin: 20px auto; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-            .header { background: linear-gradient(135deg, #002B5B, #005792); color: white; padding: 25px; text-align: center; }
-            .content { padding: 25px; }
-            p { margin-bottom: 10px; }
-            .footer { text-align: center; font-size: 12px; color: #777; padding: 15px; border-top: 1px solid #eee; }
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #1a472a 0%, #2e8b57 100%); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+            .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
         </style>
     </head>
     <body>
         <div class='container'>
             <div class='header'>
                 <h2>New Newsletter Subscription</h2>
+                <p>KML Group Website</p>
             </div>
             <div class='content'>
-                <p><strong>New subscriber email:</strong> $email</p>
-                <p><strong>Subscription Time:</strong> " . date('F j, Y \a\t g:i A') . "</p>
+                <p><strong>New subscriber:</strong> $email</p>
+                <p><strong>Subscription Date:</strong> " . date('F j, Y \a\t g:i A') . "</p>
                 <p><strong>IP Address:</strong> " . $_SERVER['REMOTE_ADDR'] . "</p>
-            </div>
-            <div class='footer'>
-                <p>© " . date('Y') . " $website_name. All rights reserved.</p>
             </div>
         </div>
     </body>
-    </html>";
-
-    $admin_headers = "From: $website_name <noreply@kmlgroup.lk>\r\n";
+    </html>
+    ";
+    
+    $admin_headers = "From: $website_name <noreply@kmlgroup.com>\r\n";
     $admin_headers .= "Reply-To: $email\r\n";
     $admin_headers .= "MIME-Version: 1.0\r\n";
     $admin_headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-    // --------------------------
-    // Auto-Reply Email to User
-    // --------------------------
-    $welcome_subject = "Welcome to the KML Group Community!";
+    
+    // Welcome email to subscriber
+    $welcome_subject = "Welcome to KML Group - A Legacy of 60 Years";
     $welcome_message = "
     <!DOCTYPE html>
     <html>
     <head>
         <style>
-            body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.7; color: #333; background: #f9f9f9; }
-            .container { max-width: 600px; margin: 20px auto; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-            .header { background: linear-gradient(135deg, #002B5B, #005792); color: white; padding: 25px; text-align: center; }
-            .content { padding: 25px; }
-            .cta-button { display: inline-block; background: #005792; color: white; text-decoration: none; padding: 12px 24px; border-radius: 5px; font-weight: 500; margin: 15px 0; }
-            .social-links a { text-decoration: none; color: #005792; margin: 0 8px; }
-            .footer { text-align: center; font-size: 12px; color: #777; padding: 20px; border-top: 1px solid #eee; }
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #1a472a 0%, #2e8b57 100%); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+            .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
+            .cta-button { display: inline-block; background: linear-gradient(135deg, #1a472a 0%, #2e8b57 100%); color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin: 10px 5px; }
+            .social-links { margin: 20px 0; }
+            .sectors { background: #e8f5e8; padding: 15px; border-radius: 5px; margin: 15px 0; }
         </style>
     </head>
     <body>
         <div class='container'>
             <div class='header'>
                 <h2>Welcome to KML Group!</h2>
-                <p>Innovating Sri Lanka’s Future</p>
+                <p>A Legacy of Excellence Spanning 60 Years</p>
             </div>
             <div class='content'>
-                <p>Hello,</p>
-                <p>🎉 Thank you for subscribing to the KML Group newsletter!</p>
-                <p>You're now part of a growing network of innovation and excellence spanning across logistics, distribution, entertainment, and corporate development.</p>
-                <p><strong>Here's what you can look forward to:</strong></p>
+                <p>Dear Subscriber,</p>
+                
+                <p>🎉 Thank you for joining the KML Group community! We're delighted to welcome you to our network of partners, clients, and well-wishers who have been part of our 60-year journey.</p>
+                
+                <p><strong>What you'll receive from our newsletter:</strong></p>
                 <ul>
-                    <li>📈 Updates on our latest business ventures</li>
-                    <li>💡 Insights into innovation across Sri Lanka</li>
-                    <li>🎤 Upcoming events, career opportunities, and more</li>
+                    <li>📈 Business insights and industry updates</li>
+                    <li>🏢 Latest developments across our business sectors</li>
+                    <li>🤝 Partnership and investment opportunities</li>
+                    <li>📅 Event invitations and corporate announcements</li>
+                    <li>🎯 Exclusive insights from our legacy of excellence</li>
                 </ul>
-                <div style='text-align:center;'>
-                    <a href='https://kmlgroup.lk/' class='cta-button'>Visit Our Website</a>
+                
+                <div class='sectors'>
+                    <p><strong>Our Business Sectors:</strong></p>
+                    <ul>
+                        <li>🚚 Logistics & Supply Chain (KML Logistics)</li>
+                        <li>💼 Investments & Holdings (KML Holdings)</li>
+                        <li>📦 Distribution & Merchandising (Kurunegala Merchants)</li>
+                        <li>🎬 Entertainment & Media (Kanlark Entertainment)</li>
+                    </ul>
                 </div>
-                <p class='social-links' style='text-align:center;'>
-                    <strong>Follow Us:</strong><br>
-                    <a href='https://www.facebook.com/kmlgroup.lk'>Facebook</a> |
-                    <a href='https://www.linkedin.com/company/kml-group-lk'>LinkedIn</a> |
-                    <a href='https://www.instagram.com/kmlgroup.lk'>Instagram</a>
-                </p>
-                <p>For inquiries, contact us at <strong>info@kmlgroup.lk</strong></p>
+                
+                <p><strong>Explore Our Business:</strong></p>
+                <div style='text-align: center;'>
+                    <a href='https://kmlgroup.com/services.html' class='cta-button'>Our Services</a>
+                    <a href='https://kmlgroup.com/about.html' class='cta-button'>Our Legacy</a>
+                    <a href='https://kmlgroup.com/kurunegala-merchants.html' class='cta-button'>Our Sectors</a>
+                </div>
+                
+                <div class='social-links'>
+                    <p><strong>Connect with us:</strong></p>
+                    <p>
+                        <a href='https://www.youtube.com/@KMLGroup'>YouTube</a> | 
+                        <a href='https://web.facebook.com/profile.php?id=61571840660818'>Facebook</a>
+                    </p>
+                </div>
+                
+                <p>For business inquiries or partnership opportunities:<br>
+                Call us: <strong>+94 37 222 2353</strong> | Email: <strong>kmlgroup.co@gmail.com</strong></p>
+                
                 <p>Warm regards,<br>
                 <strong>The KML Group Team</strong></p>
-            </div>
-            <div class='footer'>
-                <p>KML Group | Kurunegala, Sri Lanka</p>
-                <p>© " . date('Y') . " KML Group. All rights reserved.</p>
+                
+                <p><em>Building on a legacy of trust since 1964</em></p>
             </div>
         </div>
     </body>
-    </html>";
-
-    $welcome_headers = "From: KML Group <info@kmlgroup.lk>\r\n";
-    $welcome_headers .= "Reply-To: info@kmlgroup.lk\r\n";
+    </html>
+    ";
+    
+    $welcome_headers = "From: KML Group <kmlgroup.co@gmail.com>\r\n";
+    $welcome_headers .= "Reply-To: kmlgroup.co@gmail.com\r\n";
     $welcome_headers .= "MIME-Version: 1.0\r\n";
     $welcome_headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-    // --------------------------
-    // Send Emails
-    // --------------------------
+    
+    // Send emails
     $admin_sent = mail($admin_email, $admin_subject, $admin_message, $admin_headers);
     $welcome_sent = mail($email, $welcome_subject, $welcome_message, $welcome_headers);
-
+    
     if ($admin_sent || $welcome_sent) {
-        logNewsletterSubscription($email, 'Success');
-        echo json_encode([
-            'status' => 'success',
-            'message' => '✅ Thank you! You have successfully subscribed to the KML Group newsletter.'
-        ]);
+        // Log successful subscription
+        logNewsletterSubscription($email, 'success');
+        
+        // Redirect back to contact page with success message
+        header("Location: ../contact.html?newsletter_status=success&newsletter_message=" . urlencode("Thank you! You have successfully subscribed to KML Group newsletter. Check your email for a welcome message!"));
+        exit;
     } else {
-        logNewsletterSubscription($email, 'Failed');
-        echo json_encode([
-            'status' => 'error',
-            'message' => '❌ Oops! Something went wrong while subscribing. Please try again later.'
-        ]);
+        // Log failed subscription
+        logNewsletterSubscription($email, 'email_failed');
+        
+        // Redirect back with error message
+        header("Location: ../contact.html?newsletter_status=error&newsletter_message=" . urlencode("There was a problem with your subscription. Please try again."));
+        exit;
     }
-
+    
 } else {
-    echo json_encode([
-        'status' => 'error',
-        'message' => '❌ Invalid request method.'
-    ]);
+    // Not a POST request
+    header("Location: ../contact.html?newsletter_status=error&newsletter_message=" . urlencode("Invalid request method."));
+    exit;
 }
 
-/**
- * Optional: Log subscriptions to a file
- */
+// Log subscription
 function logNewsletterSubscription($email, $status) {
     $log_file = __DIR__ . '/newsletter_log.txt';
     $timestamp = date('Y-m-d H:i:s');
     $log_entry = "[$timestamp] Email: $email | Status: $status\n";
     file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX);
 }
+
 ?>
