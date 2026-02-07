@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Host = 'smtp.gmail.com';  // Replace with your SMTP server
             $mail->SMTPAuth = true;
             $mail->Username = 'kmlgroup.co@gmail.com';  // Your email
-            $mail->Password = 'wunn meqb djyb uogs';  // Use App Password for Gmail
+            $mail->Password = '';  // Use App Password for Gmail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
             
@@ -298,5 +298,6 @@ function logContactSubmission($name, $email, $subject, $status) {
     $log_entry = "[$timestamp] Name: $name | Email: $email | Subject: $subject | Status: $status | IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
     file_put_contents($log_file, $log_entry, FILE_APPEND | LOCK_EX);
 }
+
 
 ?>
