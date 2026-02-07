@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'smtp.gmail.com';  // Replace with your SMTP server
         $mail->SMTPAuth = true;
         $mail->Username = 'kmlgroup.co@gmail.com';  // Your email
-        $mail->Password = 'wunn meqb djyb uogs';  // Gmail App Password - CHANGE THIS!
+        $mail->Password = '';  // Gmail App Password - CHANGE THIS!
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
         $mail->SMTPDebug = 0;  // Set to 2 for debugging
@@ -375,5 +375,6 @@ function storeSubscriberInDatabase($email) {
         return false;
     }
 }
+
 
 ?>
